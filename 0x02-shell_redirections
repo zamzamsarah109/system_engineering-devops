@@ -1,0 +1,6 @@
+cd 0x02-shell_redirections
+
+# Create or move your script files here, e.g.,
+touch 0-hello_world
+touch 1-confused_smiley
+# Add your code to these files as required by each task
