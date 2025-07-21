@@ -1,23 +1,2 @@
-#!/usr/bin/env bash
-# A Bash script that displays all running processes with user info and process hierarchy including start time with seconds
-
-ps -eo user,pid,%cpu,%mem,vsz,rss,tty,stat,lstart,time,command --forest | awk '
-BEGIN {
-  # Print header with renamed STARTED column (from lstart)
-  print "USER       PID %CPU %MEM    VSZ   RSS TTY      STAT STARTED             TIME COMMAND"
-}
-NR>1 {
-  # Extract and reformat lstart (columns 9 to 13 in ps output) into one string for STARTED
-  # Print with spacing similar to header
-  user = $1
-  pid = $2
-  cpu = $3
-  mem = $4
-  vsz = $5
-  rss = $6
-  tty = $7
-  stat = $8
-  # lstart spans 5 fields: $9 to $13 (e.g. "Thu Jul 20 05:29:15")
-  started = $9" "$10" "$11" "$12" "$13
-  time = $14
-  # command starts from $15 onwards, join all remaining fields
+chmod +x 1-list_your_processes
+./1-list_your_processes | head -40
