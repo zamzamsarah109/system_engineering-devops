@@ -1,17 +1,4 @@
 #!/usr/bin/env bash
-# A Bash script that displays all running processes with USER, STARTED (with seconds), and COMMAND
+# A Bash script that displays the user of all currently running processes
 
-ps -eo user,lstart,cmd --no-headers | awk '{
-  # Combine lstart fields (columns 2 to 6) into time string
-  started = $4
-  user = $1
-  cmd = ""
-  for (i = 6; i <= NF; i++) {
-    cmd = cmd $i " "
-  }
-  # Trim trailing space
-  sub(/[ \t]+$/, "", cmd)
-
-  # Print output with custom header format
-  printf "%-8s %-8s %s\n", user, started, cmd
-}' | awk 'BEGIN { print "USER     STARTED  COMMAND" } { print }'
+ps -eo user --no-headers | sort | uniq | awk 'BEGIN { print "USER" } { print }'
