@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
-# Handles SIGTERM by printing "I am invincible!!!"
+# Stops the 7-highlander process using Perl kill (no kill or killall commands)
 
-trap 'echo "I am invincible!!!"' SIGTERM
-
-while true; do
-  sleep 1
-done
+pid=$(pgrep -f 7-highlander)
+if [ -n "$pid" ]; then
+  perl -e "kill 15, $pid"
+fi
