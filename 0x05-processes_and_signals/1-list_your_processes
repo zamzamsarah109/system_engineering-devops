@@ -1,4 +1,2 @@
-#!/usr/bin/env bash
-# A Bash script that displays all running processes with user info and process hierarchy
-
-ps -e -o user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,command --forest
+chmod +x 1-list_your_processes
+./1-list_your_processes | head
