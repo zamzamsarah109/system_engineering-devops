@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # A Bash script that displays all running processes with user info and process hierarchy
-# Includes full start time with seconds
+# Shows start time with seconds as expected
 
 ps -e -o user,pid,%cpu,%mem,vsz,rss,tty,stat,stime,time,command --forest
